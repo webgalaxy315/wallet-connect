@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World DApp</title>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="container">
+    <h1>USDT Token Contract Integrate Application&nbsp;&nbsp;&nbsp;<a onclick="connect()" class="btn btn-primary">Metamask Connect</a>&nbsp;&nbsp;</h1><br>
+    <div class="row">
+        <!-- <div class="col-md-5">
+            <h3>Read Functions</h3>
+            <div>name: <span id="res_name"></span></div>
+            <div>symbol: <span id="res_symbol"></span></div>
+            <div>decimals: <span id="res_decimals"></span></div>
+            <div>totalSupply: <span id="res_totalSupply"></span></div>
+            <div>owner: <span id="res_owner"></span></div>
+            <div>paused: <span id="res_paused"></span></div>
+            <div>taxStatus: <span id="res_taxStatus"></span></div>
+            <br>
+            <div>allowance</div>
+            <input type="text" id="allowance_owner" placeholder="owner (address)" /><br>
+            <input type="text" id="allowance_spender" placeholder="spender (address)" />
+            <a onclick="read_allowance()" class="btn btn-primary">Read</a>
+            <div>allowance: <span id="res_allowance"></span></div>
+            <br>
+            <div>balanceOf</div>
+            <input type="text" id="balanceOf_account" placeholder="account (address)" />
+            <a onclick="read_balanceOf()" class="btn btn-primary">Read</a>
+            <div>balanceOf: <span id="res_balanceOf"></span></div>
+            <br>
+            <div>isBlacklisted</div>
+            <input type="text" id="isBlacklisted_account" placeholder="account (address)" />
+            <a onclick="read_isBlacklisted()" class="btn btn-primary">Read</a>
+            <div>isBlacklisted: <span id="res_isBlacklisted"></span></div>
+            <br>
+            <div>isExcluded</div>
+            <input type="text" id="isExcluded_account" placeholder="account (address)" />
+            <a onclick="read_isExcluded()" class="btn btn-primary">Read</a>
+            <div>isExcluded: <span id="res_isExcluded"></span></div>
+        </div> -->
+        <div class="col-md-7">
+            <h3>Write Functions</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>approve</div>
+                    <input type="text" id="approve_spender" placeholder="spender (address)" /><br>
+                    <input type="text" id="approve_amount" placeholder="amount (uint256)" />
+                    <a onclick="write_approve()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_approve"></span></div>
+                    <br>
+                    <div>burn</div>
+                    <input type="text" id="burn_amount" placeholder="amount (uint256)" />
+                    <a onclick="write_burn()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_burn"></span></div>
+                    <br>
+                    <div>decreaseAllowance</div>
+                    <input type="text" id="decreaseAllowance_spender" placeholder="spender (address)" /><br>
+                    <input type="text" id="decreaseAllowance_subtractedValue" placeholder="subtractedValue (uint256)" />
+                    <a onclick="write_decreaseAllowance()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_decreaseAllowance"></span></div>
+                    <br>
+                    <!-- <div>disableBlicklist</div>
+                    <input type="text" id="disableBlicklist_account" placeholder="account (address)" />
+                    <a onclick="write_disableBlicklist()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_disableBlicklist"></span></div> -->
+                    <!-- <br>
+                    <div>enableBlicklist</div>
+                    <input type="text" id="enableBlicklist_account" placeholder="account (address)" />
+                    <a onclick="write_enableBlicklist()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_enableBlicklist"></span></div> -->
+                    <!-- <br>
+                    <div>exclude</div>
+                    <input type="text" id="exclude_account" placeholder="account (address)" />
+                    <a onclick="write_exclude()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_exclude"></span></div>
+                    <br> -->
+                    <div>increaseAllowance</div>
+                    <input type="text" id="increaseAllowance_spender" placeholder="spender (address)" /><br>
+                    <input type="text" id="increaseAllowance_addedValue" placeholder="addedValue (uint256)" />
+                    <a onclick="write_increaseAllowance()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_increaseAllowance"></span></div>
+                    <br>
+                    <!-- <div>removeExclude</div>
+                    <input type="text" id="removeExclude_account" placeholder="account (address)" />
+                    <a onclick="write_removeExclude()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_removeExclude"></span></div>
+                    <br>
+                    <div>setBuyTax</div>
+                    <input type="text" id="setBuyTax_dev" placeholder="dev (uint256)" /><br>
+                    <input type="text" id="setBuyTax_marketing" placeholder="marketing (uint256)" /><br>
+                    <input type="text" id="setBuyTax_liquidity" placeholder="liquidity (uint256)" /><br>
+                    <input type="text" id="setBuyTax_charity" placeholder="charity (uint256)" />
+                    <a onclick="write_setBuyTax()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_setBuyTax"></span></div>
+                    <br> -->
+                </div>
+                <div class="col-md-6">
+                    <!-- <div>setSellTax</div>
+                    <input type="text" id="setSellTax_dev" placeholder="dev (uint256)" /><br>
+                    <input type="text" id="setSellTax_marketing" placeholder="marketing (uint256)" /><br>
+                    <input type="text" id="setSellTax_liquidity" placeholder="liquidity (uint256)" /><br>
+                    <input type="text" id="setSellTax_charity" placeholder="charity (uint256)" />
+                    <a onclick="write_setSellTax()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_setSellTax"></span></div>
+                    <br>
+                    <div>setTaxWallet</div>
+                    <input type="text" id="setTaxWallet_dev" placeholder="dev (address)" /><br>
+                    <input type="text" id="setTaxWallet_marketing" placeholder="marketing (address)" /><br>
+                    <input type="text" id="setTaxWallet_charity" placeholder="charity (address)" />
+                    <a onclick="write_setTaxWallet()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_setTaxWallet"></span></div> -->
+                    <br>
+                    <div>transfer</div>
+                    <input type="text" id="transfer_recipient" placeholder="recipient (address)" /><br>
+                    <input type="text" id="transfer_amount" placeholder="amount (uint256)" />
+                    <a onclick="write_transfer()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_transfer"></span></div>
+                    <br>
+                    <div>transferFrom</div>
+                    <input type="text" id="transferFrom_sender" placeholder="sender (address)" /><br>
+                    <input type="text" id="transferFrom_recipient" placeholder="recipient (address)" /><br>
+                    <input type="text" id="transferFrom_amount" placeholder="amount (uint256)" />
+                    <a onclick="write_transferFrom()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_transferFrom"></span></div>
+                    <br>
+                    <div>transferOwnership</div>
+                    <input type="text" id="transferOwnership_newOwner" placeholder="newOwner (address)" />
+                    <a onclick="write_transferOwnership()" class="btn btn-primary">Write</a>
+                    <div>result: <span id="res_transferOwnership"></span></div>
+                    <!-- <br>
+                    <div><a onclick="write_renounceOwnership()" class="btn btn-primary">Write</a>&nbsp; renounceOwnership</div>
+                    <div>result: <span id="res_renounceOwnership"></span></div>
+                    <br>
+                    <div><a onclick="write_enableTax()" class="btn btn-primary">Write</a>&nbsp; enableTax</div>
+                    <div>result: <span id="res_enableTax"></span></div>
+                    <br>
+                    <div><a onclick="write_disableTax()" class="btn btn-primary">Write</a>&nbsp; disableTax</div>
+                    <div>result: <span id="res_disableTax"></span></div>
+                    <br>
+                    <div><a onclick="write_triggerTax()" class="btn btn-primary">Write</a>&nbsp; triggerTax</div>
+                    <div>result: <span id="res_triggerTax"></span></div>
+                    <br>
+                    <div><a onclick="write_pause()" class="btn btn-primary">Write</a>&nbsp; pause</div>
+                    <div>result: <span id="res_pause"></span></div>
+                    <br>
+                    <div><a onclick="write_unpause()" class="btn btn-primary">Write</a>&nbsp; unpause</div>
+                    <div>result: <span id="res_unpause"></span></div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 300px;">
+
+    </div>
+</body>
+<script charset="utf-8" src="https://cdn.ethers.io/scripts/ethers-v4.min.js" type="text/javascript">
+</script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="./mytoken.js"></script>
+
+</html>
